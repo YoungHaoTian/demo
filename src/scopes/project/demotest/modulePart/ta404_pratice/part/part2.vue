@@ -1,18 +1,15 @@
 <template>
-    <div>
-        <div style="margin-top: 30px">
-            <ta-row>
-                <ta-col><img src="../static/title1.png"/>属性一</ta-col>
-            </ta-row>
-        </div>
-        <div style="margin-top: 30px">
-            <ta-row type="flex" justify="space-around" >
-                <ta-col :span="7">
-                    <span>级联选择：</span>
+    <div style="width: 100%;height:150px">
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+            <div slot="header">
+                <img src="../static/title1.png"/>属性一
+            </div>
+            <ta-form layout="horizontal"
+                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                <ta-form-item label="级联选择">
                     <ta-cascader :options="options"/>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>渲染展示项：</span>
+                </ta-form-item>
+                <ta-form-item label="渲染展示项">
                     <ta-cascader :options="options">
                         <template slot="displayRender" slot-scope="{labels,selectedOptions}">
                             <span v-for="(label, index) in labels" :key="selectedOptions[index].value">
@@ -21,39 +18,34 @@
                             </span>
                         </template>
                     </ta-cascader>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>定义展开方式：</span>
+                </ta-form-item>
+                <ta-form-item label="定义展开方式">
                     <ta-cascader :options="options" expand-trigger="hover"
                                  :display-render="displayRender"/>
-                </ta-col>
-            </ta-row>
-        </div>
+                </ta-form-item>
+            </ta-form>
+        </ta-border-layout>
 
-        <div style="margin-top: 60px">
-            <ta-row>
-                <ta-col><img src="../static/title1.png"/>属性二</ta-col>
-            </ta-row>
-        </div>
-        <div style="margin-top: 30px">
-            <ta-row type="flex" justify="space-around">
-                <ta-col :span="7">
-                    <span>自设样式：</span>
-                    <ta-cascader :options="options" :popup-style="{backgroundColor:'red',color:'white'}"/>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>自定义后缀：</span>
-                    <ta-cascader :options="options">
-                        <ta-icon type="caret-down" slot="suffixIcon"/>
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+            <div slot="header">
+                <img src="../static/title1.png"/>属性二
+            </div>
+            <ta-form layout="horizontal"
+                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                <ta-form-item label="自设样式">
+                    <ta-cascader :options="options" :popup-style="{backgroundColor:'red',color:'white'}" popupClassName="customRender"/>
+                </ta-form-item>
+                <ta-form-item label="自定义后缀">
+                    <ta-cascader :options="options" @change="()=>{this.flag=true}">
+                        <ta-icon v-if="flag" type="caret-down" slot="suffixIcon"/>
+                        <ta-icon v-else type="caret-up" slot="suffixIcon"/>
                     </ta-cascader>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>限制搜索条数：</span>
+                </ta-form-item>
+                <ta-form-item label="限制搜索条数">
                     <ta-cascader :options="options" :show-search="{limit:1,filter}"/>
-                </ta-col>
-            </ta-row>
-        </div>
-
+                </ta-form-item>
+            </ta-form>
+        </ta-border-layout>
     </div>
 </template>
 
@@ -84,6 +76,14 @@
             label: '广州'
           }]
         }],
+        flag: false,
+        col: {
+          xs: 1,
+          sm: 2,
+          md: 2,
+          lg: 3,
+        },
+        flag:true
       }
     },
     methods: {
@@ -98,13 +98,19 @@
         }
         return select
       },
-      filter(inputValue,path){
+      filter (inputValue, path) {
         return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1))
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
+    .customRender .ant-cascader-menu-item:hover {
+        background-color: #188eff;
+    }
 
+    .customRender .ant-cascader-menu-item-active {
+        background-color: #188eff;
+    }
 </style>

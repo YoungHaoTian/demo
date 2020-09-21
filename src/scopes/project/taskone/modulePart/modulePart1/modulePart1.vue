@@ -254,8 +254,7 @@
                         :closable="false"
                         @close="handleDrawerClose"
                         :visible="drawerVisible"
-                        height="300px"
-                >
+                        height="300px">
                     <span slot="title" style="font-weight:800;">人员信息修改</span>
                     <ta-form layout="horizontal"
                              :form-layout="true"
@@ -307,6 +306,7 @@
                                       placeholder="请输入居民身份证号码"
                                       @change="editFormFieldsChange($event,'certno')"
                                       @pressEnter="editFormFieldsEnter('certno')"
+                                      @blur="()=>{this.editFormFeedback.certno=true}"
                                       @focus="editFormFieldsFocus($event,'certno')"/>
                         </ta-form-item>
                         <ta-form-item
@@ -355,6 +355,7 @@
                                       placeholder="请输入手机号码"
                                       @change="editFormFieldsChange($event,'mob')"
                                       @pressEnter="editFormFieldsEnter('mob')"
+                                      @blur="()=>{this.editFormFeedback.mob=true}"
                                       @focus="editFormFieldsFocus($event,'mob')"/>
                         </ta-form-item>
                         <ta-form-item
@@ -367,6 +368,7 @@
                                       placeholder="请输入邮箱地址"
                                       @change="editFormFieldsChange($event,'email')"
                                       @pressEnter="editFormFieldsEnter('email')"
+                                      @blur="()=>{this.editFormFeedback.email=true}"
                                       @focus="editFormFieldsFocus($event,'email')"/>
                         </ta-form-item>
                         <ta-form-item
@@ -758,6 +760,7 @@
         console.log(data)
       })
       this.screenWidth = document.body.clientWidth
+      //初始化页面时，设置查询表单的宽度
       if (this.screenWidth < 576) { // xs
         $('#queryForm').css('height', '168px')
       } else if (this.screenWidth < 992) { // sm
@@ -765,6 +768,7 @@
       } else { // lg
         $('#queryForm').css('height', '56px')
       }
+      //监听窗口宽度的变化，动态改变查询表单的宽度
       window.onresize = () => {
         return (() => {
           this.screenWidth = document.body.clientWidth
@@ -796,6 +800,9 @@
         this.tableData.forEach((item) => {
         })
       },
+    },
+    destroyed () {//关闭窗口的监听
+      window.onresize=null
     },
     methods: {
       handleRowDelete (psnNo) {
@@ -836,6 +843,9 @@
         this.editForm.setFieldsValue(this.editFormInitValue)
         for (const key in this.editFormDataRecord) {
           this.editFormDataRecord[key] = ''
+        }
+        for (const key in this.editFormFeedback) {
+          this.editFormFeedback[key] = false
         }
       },
       handleEditCommit () { // 点击“保存”时第一个被触发

@@ -1,14 +1,12 @@
 <template>
-    <div>
-        <div style="margin-top: 30px">
-            <ta-row>
-                <ta-col><img src="../static/title1.png"/>属性一</ta-col>
-            </ta-row>
-        </div>
-        <div style="margin-top: 30px">
-            <ta-row type="flex" justify="space-around">
-                <ta-col :span="7">
-                    <span>前缀和后缀：</span>
+    <div style="width: 100%;height:150px">
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+            <div slot="header">
+                <img src="../static/title1.png"/>属性一
+            </div>
+            <ta-form layout="horizontal"
+                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                <ta-form-item label="前缀和后缀">
                     <ta-input style="width:75%">
                         <ta-select slot="addonBefore" defaultValue="Http://" style="width: 90px">
                             <ta-select-option value="Http://">http://</ta-select-option>
@@ -21,61 +19,48 @@
                             <ta-select-option value=".org">.org</ta-select-option>
                         </ta-select>
                     </ta-input>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>添加前后图标：</span>
+                </ta-form-item>
+                <ta-form-item label="添加前后图标">
                     <ta-input style="width:75%">
                         <ta-icon slot="prefix" type="apple"/>
                         <ta-icon slot="suffix" type="position"/>
                     </ta-input>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>搜索框：</span>
+                </ta-form-item>
+                <ta-form-item label="搜索框">
                     <ta-input-search style="width:75%"/>
-                </ta-col>
-            </ta-row>
-        </div>
+                </ta-form-item>
+            </ta-form>
+        </ta-border-layout>
 
-        <div style="margin-top: 60px">
-            <ta-row>
-                <ta-col><img src="../static/title1.png"/>属性二</ta-col>
-            </ta-row>
-        </div>
-        <div style="margin-top: 30px">
-            <ta-row type="flex" justify="space-around">
-                <ta-col :span="7">
-                    <span>金额的格式化：</span>
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+            <div slot="header">
+                <img src="../static/title1.png"/>属性二
+            </div>
+            <ta-form layout="horizontal"
+                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                <ta-form-item label="金额的格式化">
                     <ta-input-number style="width:75%" :asAmount="true"/>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>最大值(30.00)：</span>
+                </ta-form-item>
+                <ta-form-item label="最大值(30.00)">
                     <ta-input-number style="width:75%" :max="30.00" :precision="2" :step="0.01"/>
-                </ta-col>
-                <ta-col :span="7">
-                    <span>最小值(10.00)：</span>
+                </ta-form-item>
+                <ta-form-item label="最小值(10.00)">
                     <ta-input-number style="width:75%" :min="10.00" :precision="2" :step="0.01"/>
-                </ta-col>
-            </ta-row>
-        </div>
+                </ta-form-item>
+            </ta-form>
+        </ta-border-layout>
 
-
-        <div style="margin-top: 60px">
-            <ta-row>
-                <ta-col><img src="../static/title1.png"/>属性三</ta-col>
-            </ta-row>
-        </div>
-        <div style="margin-top: 30px">
-            <ta-row type="flex" justify="space-around">
-                <ta-col :span="7">
-                    <span>保留两位小数：</span>
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+            <div slot="header">
+                <img src="../static/title1.png"/>属性三
+            </div>
+            <ta-form layout="horizontal"
+                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                <ta-form-item label="保留两位小数">
                     <ta-input-number style="width:75%" :precision="2" :step="0.01"/>
-                </ta-col>
-                <ta-col :span="7">
-                </ta-col>
-                <ta-col :span="7">
-                </ta-col>
-            </ta-row>
-        </div>
+                </ta-form-item>
+            </ta-form>
+        </ta-border-layout>
     </div>
 </template>
 
