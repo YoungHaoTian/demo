@@ -27,7 +27,7 @@
                      :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
                 <ta-form-item label="自定义单元格">
                     <ta-date-picker>
-                        <template slot="dateRender" slot-scope="current, today">
+                        <template class="ant-calendar-cell" slot="dateRender" slot-scope="current, today">
                             <div :style="getCurrentStyle(current, today)">
                                 {{current.date()}}
                             </div>

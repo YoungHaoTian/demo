@@ -704,7 +704,7 @@
         screenWidth: 0,
         headStyle: {
           'border-bottom-width': '0',
-          'padding-bottom': '0px'
+          // 'padding-bottom': '0px'
         },
         addFormCertType: '01',
         editFormCertType: '',
