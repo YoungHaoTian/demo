@@ -4,8 +4,8 @@
             <div slot="header">
                 <img src="../static/title1.png"/>属性一
             </div>
-            <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+            <ta-form layout="horizontal" :labelWidth="120"
+                     :form-layout="true" :col="col">
                 <ta-form-item label="格式化日期">
                     <ta-date-picker format="YYYY-MM"/>
                 </ta-form-item>
@@ -19,12 +19,12 @@
             </ta-form>
         </ta-border-layout>
 
-        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false" >
             <div slot="header">
                 <img src="../static/title1.png"/>属性二
             </div>
-            <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+            <ta-form layout="horizontal"  :labelWidth="120"
+                     :form-layout="true" :col="col">
                 <ta-form-item label="自定义单元格">
                     <ta-date-picker>
                         <template slot="dateRender" slot-scope="current, today">
@@ -52,7 +52,7 @@
                 <img src="../static/title1.png"/>属性三
             </div>
             <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                     :form-layout="true" :col="col" :style="{marginRight:'50px'}">
                 <ta-form-item label="范围选择日期">
                     <ta-range-picker/>
                 </ta-form-item>
@@ -116,5 +116,8 @@
 </script>
 
 <style scoped>
-
+    /*日历显示的字体颜色*/
+    .ant-calendar-cell>div{
+        color:white;
+    }
 </style>
