@@ -19,16 +19,17 @@
             </ta-form>
         </ta-border-layout>
 
-        <ta-border-layout :layout="{header:'50px'}" :showBorder="false" >
+        <ta-border-layout :layout="{header:'50px'}" :showBorder="false">
             <div slot="header">
                 <img src="../static/title1.png"/>属性二
             </div>
-            <ta-form layout="horizontal"  :labelWidth="120"
+            <ta-form layout="horizontal" :labelWidth="120"
                      :form-layout="true" :col="col">
                 <ta-form-item label="自定义单元格">
                     <ta-date-picker>
-                        <template class="ant-calendar-cell" slot="dateRender" slot-scope="current, today">
-                            <div :style="getCurrentStyle(current, today)">
+                        <template slot="dateRender" slot-scope="current, today">
+                            <!--注意：ant-calendar-cell、ant-calendar-date、和自定义或者不设置类名的区别-->
+                            <div class="customClass" :style="getCurrentStyle(current, today)">
                                 {{current.date()}}
                             </div>
                         </template>
@@ -52,7 +53,7 @@
                 <img src="../static/title1.png"/>属性三
             </div>
             <ta-form layout="horizontal"
-                     :form-layout="true" :col="col" :style="{marginRight:'50px'}">
+                     :form-layout="true" :col="col">
                 <ta-form-item label="范围选择日期">
                     <ta-range-picker/>
                 </ta-form-item>
@@ -109,15 +110,19 @@
         } else {
           style.backgroundColor = 'blue'
         }
+        style.color = 'white'
         return style
       },
     }
   }
 </script>
 
-<style scoped>
-    /*日历显示的字体颜色*/
-    .ant-calendar-cell>div{
-        color:white;
+<style>
+    .borderLayout > div.showBorder.header > div {
+        border: none;
     }
+
+    /*.ant-form-item-control {
+        width: 80%;
+    }*/
 </style>

@@ -26,7 +26,7 @@ exports.devChain = (webpackConfig) => {
   //   .use(CSSSplitWebpackPlugin, [
   //     {
   //       size: 3000,
-  //       filename: 'css/[name]-[part].[ext]',
+  //       filename: 'css/[name]-[classPractice].[ext]',
   //     }
   //   ])
   return webpackConfig

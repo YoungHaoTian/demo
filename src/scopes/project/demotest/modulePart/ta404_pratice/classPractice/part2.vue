@@ -5,7 +5,7 @@
                 <img src="../static/title1.png"/>属性一
             </div>
             <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                     :form-layout="true" :col="col">
                 <ta-form-item label="级联选择">
                     <ta-cascader :options="options"/>
                 </ta-form-item>
@@ -31,7 +31,7 @@
                 <img src="../static/title1.png"/>属性二
             </div>
             <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                     :form-layout="true" :col="col">
                 <ta-form-item label="自设样式">
                     <ta-cascader :options="options" :popup-style="{backgroundColor:'red',color:'white'}" popupClassName="customRender"/>
                 </ta-form-item>
@@ -110,7 +110,15 @@
         background-color: #188eff;
     }
 
+    .borderLayout > div.showBorder.header > div {
+        border: none;
+    }
+
     .customRender .ant-cascader-menu-item-active {
         background-color: #188eff;
+    }
+
+    .ant-form-item-control{
+        width: 80%;
     }
 </style>

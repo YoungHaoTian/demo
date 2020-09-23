@@ -5,7 +5,7 @@
                 <img src="../static/title1.png"/>属性一
             </div>
             <ta-form layout="horizontal"
-                     :form-layout="true" :gutter="100" :col="col" :style="{marginRight:'100px'}">
+                     :form-layout="true" :col="col" :style="{marginRight:'100px'}">
                 <ta-form-item label="自动补全">
                     <ta-auto-complete
                             :dataSource="dataSource1"
@@ -27,7 +27,7 @@
             <div slot="header">
                 <img src="../static/title1.png" alt="加载失败"/>属性二
             </div>
-            <ta-form layout="horizontal" :gutter="100" :col="col" :style="{marginRight:'100px'}"
+            <ta-form layout="horizontal" :col="col" :style="{marginRight:'100px'}"
                      :form-layout="true">
                 <ta-form-item label="带默认值">
                     <ta-auto-complete default-value="111"/>
@@ -50,7 +50,7 @@
             <div slot="header">
                 <img src="../static/title1.png" alt="加载失败"/>属性三
             </div>
-            <ta-form layout="horizontal" :gutter="100" :col="col" :style="{marginRight:'100px'}"
+            <ta-form layout="horizontal" :col="col" :style="{marginRight:'100px'}"
                      :form-layout="true">
                 <ta-form-item label="禁止使用">
                     <ta-auto-complete
@@ -124,8 +124,11 @@
   }
 </script>
 
-<style>
+<style scoped>
     .borderLayout > div.showBorder.header > div {
         border: none;
+    }
+    .ant-form-item-control{
+        width: 80%;
     }
 </style>
